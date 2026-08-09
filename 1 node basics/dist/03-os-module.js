@@ -1,6 +1,5 @@
 // check os, cpu, memeory, find home directory/temp dir
-
-import * as os from 'node:os'
+import * as os from 'node:os';
 // console.log(os.homedir());
 // console.log(os.tmpdir());
 // console.log(os.hostname());
@@ -13,17 +12,16 @@ import * as os from 'node:os'
 // console.log(os.uptime());
 // console.log(os.loadavg());
 // console.log(os.platform());
-
-function runOsDemo():void{
+function runOsDemo() {
     console.log(os.platform());
     console.log(os.arch());
     console.log(os.release());
     console.log(os.homedir());
     console.log(os.tmpdir());
-    const cpus=os.cpus();
+    const cpus = os.cpus();
     console.log(cpus.length);
     const firstCpu = cpus[0];
-    if(firstCpu){
+    if (firstCpu) {
         console.log(firstCpu.model);
         console.log(firstCpu.speed);
         console.log(firstCpu.times);
@@ -31,7 +29,6 @@ function runOsDemo():void{
     console.log(os.totalmem());
     console.log(os.freemem());
     console.log(os.uptime());
-    
 }
-
 runOsDemo();
+//# sourceMappingURL=03-os-module.js.map
