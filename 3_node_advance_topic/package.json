@@ -1,0 +1,19 @@
+{
+	"name": "3_node_advance_topic",
+	"version": "1.0.0",
+	"description": "Node.js Advance Topics Course",
+	"main": "dist/index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "tsx watch src/index.ts",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^26.2.0",
+		"tsx": "^4.23.1",
+		"typescript": "^7.0.2"
+	}
+}
