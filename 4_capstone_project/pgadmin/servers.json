@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Capstone DB",
+      "Group": "Servers",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "nodejs-capstone-db",
+      "Username": "root",
+      "SSLMode": "prefer"
+    }
+  }
+}
