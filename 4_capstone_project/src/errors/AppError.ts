@@ -1,5 +1,5 @@
 
-export class AppErro extends Error{
+export class AppError extends Error{
     statusCode:number;
     constructor(statusCode:number,message:string){
         super(message);
