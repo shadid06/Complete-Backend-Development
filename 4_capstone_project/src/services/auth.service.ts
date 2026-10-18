@@ -45,8 +45,7 @@ export async function registerUser(email:string,password:string):Promise<void>{
 
 //login
 
-export async function loginUser(req:Express.Request,res:Express.Response,next:Express.NextFunction):Promise<{accessToken:string}>{
-    const {email,password}=req.body;
+export async function loginUser(email:string,password:string):Promise<{accessToken:string}>{
      if(!email || !password){
         throw new AppError(400,'Email and password are required');
     }
@@ -58,24 +57,22 @@ export async function loginUser(req:Express.Request,res:Express.Response,next:Ex
     }
 
     const normalizedEmail=email.toLowerCase().trim();
-    try{
-        const userExist=await findUserByEmail(normalizedEmail);
-          const isPasswordValid=await bcrypt.compare(password,userExist?.password_hash)
-        if(!userExist || !isPasswordValid){
-            throw new AppError(400,'Invalid email or password');
-        }
-      
-      const accessToken=signAccesstoken({
+
+    const userExist=await findUserByEmail(normalizedEmail);
+    if(!userExist){
+        throw new AppError(400,'Invalid email or password');
+    }
+
+    const isPasswordValid=await bcrypt.compare(password,userExist.password_hash);
+    if(!isPasswordValid){
+        throw new AppError(400,'Invalid email or password');
+    }
+
+    const accessToken=signAccesstoken({
         userId:userExist.id,
         email:userExist.email,
         role:userExist.role,
-        
-      });
-     return{
-        accessToken,
-     }
-      
-    }catch(error){
-       next(error);
-    }
+    });
+
+    return{ accessToken };
 }
