@@ -8,7 +8,7 @@ CREATE TABLE support_tasks (
     CHECK (status IN ('OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED')),
     priority VARCHAR(255) NOT NULL DEFAULT 'MEDIUM',
     CHECK (priority IN ('LOW', 'MEDIUM', 'HIGH', 'URGENT')),
-    category VARCHAR(255) NOT NULL DEFAULT 'GENERAL',
+    category VARCHAR(255) NOT NULL DEFAULT 'OTHER',
     CHECK (category IN ('TECHNICAL', 'BILLING', 'FEATURE_REQUEST', 'OTHER')),
     assigned_to UUID REFERENCES users(id) ON DELETE SET NULL,
     resolution_notes TEXT,
